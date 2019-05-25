@@ -71,15 +71,19 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
   const isbn = document.querySelector('#isbn').value;
 
   // validate a book
+  if(title === ''|| author === '' || isbn === '') {
+    alert('Please fill in all fields');
+  } else {
+    // instantiating a book
+    const book = new Book(title, author, isbn);
+  
+    // Add book to list
+    UI.addBookToList(book);
+  
+    // clear fields
+    UI.clearFields();
+  }
 
-  // instantiating a book
-  const book = new Book(title, author, isbn);
-
-  // Add book to list
-  UI.addBookToList(book);
-
-  // clear fields
-  UI.clearFields();
 });
 //! Event - Remove a Book
 document.querySelector('#book-list').addEventListener('click', (e) => {
